@@ -1,35 +1,36 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Project name and version
+# Nome do projeto e versão
 project(SpeedSensorExample VERSION 1.0)
 
-# Set C++ standard
+# Definir o padrão do C++
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add submodule for CANBus
+# Adicionar submódulo para CANBus
 add_subdirectory(CANBus)
 
-# Include directories for the CANBus library
-include_directories(CANBus/includes)  # Include Controller's headers
+# Incluir diretórios para os cabeçalhos do CANBus
+include_directories(CANBus/includes)
 
-# Include directories for your headers
+# Incluir diretórios para seus cabeçalhos
 include_directories(${PROJECT_SOURCE_DIR}/includes)
 
-# Add sources for the main library
-set(SOURCES
+# Adicionar os arquivos de origem para a biblioteca SpeedSensor
+set(LIB_SOURCES
     sources/SpeedSensor.cpp
 )
 
-# Create the library (Static or Shared)
-add_library(SpeedSensorLib STATIC ${SOURCES})
+# Criar a biblioteca estática SpeedSensorLib
+add_library(SpeedSensorLib STATIC ${LIB_SOURCES})
 
-# Link the CANBus library
+# Linkar a biblioteca CANBus
 target_link_libraries(SpeedSensorLib PRIVATE CANBus)
 
-# Add tests using Google Test (optional)
+# Adicionar testes (opcional)
 enable_testing()
 add_subdirectory(tests)
 
-# Optional: Installation
+# Instalar a biblioteca (opcional)
 install(TARGETS SpeedSensorLib DESTINATION lib)
+

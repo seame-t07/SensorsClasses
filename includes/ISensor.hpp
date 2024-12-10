@@ -13,6 +13,7 @@ class ISensor {
         virtual ~ISensor() = default;
 
         virtual void initialize() = 0;
-        virtual void readData() = 0;
+        virtual int readData() = 0;
         virtual const std::string getType() const = 0;
+        virtual const float getValue() const = 0;
 };
