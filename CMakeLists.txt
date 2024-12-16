@@ -19,6 +19,7 @@ include_directories(${PROJECT_SOURCE_DIR}/includes)
 # Adicionar os arquivos de origem para a biblioteca SpeedSensor
 set(LIB_SOURCES
     sources/SpeedSensor.cpp
+    sources/ParkSensor.cpp
 )
 
 # Criar a biblioteca estática SpeedSensorLib
