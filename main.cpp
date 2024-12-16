@@ -1,5 +1,6 @@
 #include "ISensor.hpp"
 #include "SpeedSensor.hpp"
+#include "ParkSensor.hpp"
 #include "CANBus/includes/CANBus.hpp"
 
 int main() {
@@ -12,6 +13,7 @@ int main() {
         sensor->readData();
         sensor2->readData();
         std::cout << "Read from " << sensor->getType() << sensor->getValue() << std::endl;
+        std::cout << "Read from " << sensor2->getType() << sensor->getValue() << std::endl;
     }
     delete sensor;
     return 0;
