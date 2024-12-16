@@ -8,7 +8,6 @@ void SpeedSensor::initialize() {
     std::cout << "Inicializando sensor de velocidade..." << std::endl;
 }
 
-
 int SpeedSensor::readData() {
     uint32_t id;
     std::vector<uint8_t> data;
@@ -27,20 +26,15 @@ int SpeedSensor::readData() {
 
             std::cout << std::dec << std::endl; // Retorna ao formato decimal
 
-            // Verifica se temos dados suficientes para interpretar um valor de velocidade
-            if (data.size() >= sizeof(float)) {
-                // Supondo que os dados estejam em formato little-endian (ou big-endian se for necessário)
-                // Converte os primeiros 4 bytes para um valor do tipo float
-                uint32_t rawData = data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
-
-                // Faz a conversão de uint32_t para float
-                float sensorValue;
-                std::memcpy(&sensorValue, &rawData, sizeof(sensorValue));
+            // Verifica se temos dados suficientes para interpretar um valor inteiro (2 bytes)
+            if (data.size() >= 2) {
+                // Converte os primeiros 2 bytes para um inteiro (little-endian)
+                int sensorValue = data[0] | (data[1] << 8);
 
                 // Atribui o valor ao atributo _lastSpeed
                 _lastSpeed = sensorValue;
 
-                std::cout << "Velocidade lida: " << _lastSpeed << " m/s" << std::endl;
+                std::cout << "Velocidade lida: " << _lastSpeed << " unidades" << std::endl;
 
                 return 0; // Sucesso
             } else {
