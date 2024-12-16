@@ -26,12 +26,17 @@ int ParkSensor::readData() {
 
             std::cout << std::dec << std::endl;
 
-            // Se temos 2 bytes (como esperado para a distância)
+            // Verifica se temos pelo menos 2 bytes
             if (data.size() >= 2) {
-                // Converte os 2 bytes para um valor de distância (little-endian)
-                int sensorValue = data[0] | (data[1] << 8);  // (byte baixo | byte alto << 8)
+                // Leitura de 2 bytes e conversão para distância em centímetros
+                // Certifique-se de que a ordem dos bytes está correta para o seu sistema
+                // Little-endian (byte mais baixo vem primeiro)
+                int sensorValue = data[0] | (data[1] << 8);  // Little-endian: byte baixo | byte alto << 8
 
-                // Atribui o valor ao atributo _distance (distância em cm)
+                // Caso seja necessário usar Big-endian (byte mais alto vem primeiro):
+                // int sensorValue = (data[1] | (data[0] << 8));  // Big-endian: byte alto | byte baixo << 8
+
+                // Atribui o valor à variável _distance (distância em cm)
                 _distance = sensorValue;
 
                 std::cout << "Distância lida: " << _distance << " cm" << std::endl;
