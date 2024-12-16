@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Nome do projeto e versão
-project(SpeedSensorExample VERSION 1.0)
+project(Sensors VERSION 1.0)
 
 # Definir o padrão do C++
 set(CMAKE_CXX_STANDARD 17)
@@ -23,15 +23,15 @@ set(LIB_SOURCES
 )
 
 # Criar a biblioteca estática SpeedSensorLib
-add_library(SpeedSensorLib STATIC ${LIB_SOURCES})
+add_library(SensorsLib STATIC ${LIB_SOURCES})
 
 # Linkar a biblioteca CANBus
-target_link_libraries(SpeedSensorLib PRIVATE CANBus)
+target_link_libraries(SensorsLib PRIVATE CANBus)
 
 # Adicionar testes (opcional)
 enable_testing()
 add_subdirectory(tests)
 
 # Instalar a biblioteca (opcional)
-install(TARGETS SpeedSensorLib DESTINATION lib)
+install(TARGETS SensorsLib DESTINATION lib)
 
