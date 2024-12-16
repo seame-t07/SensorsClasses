@@ -5,7 +5,7 @@ ParkSensor::ParkSensor(CANBus& can, uint32_t id) : ISensor(can, id), _distance(0
 }
 
 void ParkSensor::initialize() {
-    std::cout << "Inicializando sensor de velocidade..." << std::endl;
+    std::cout << "Park Sensor" << std::endl;
 }
 
 int ParkSensor::readData() {
@@ -26,7 +26,6 @@ int ParkSensor::readData() {
 
             std::cout << std::dec << std::endl;
 
-            // Verifica se temos dados suficientes para interpretar um valor de velocidade
             if (data.size() >= sizeof(float)) {
                 uint32_t rawData = data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
 
@@ -37,7 +36,7 @@ int ParkSensor::readData() {
                 _distance = sensorValue;
 
                 std::cout << "Velocidade lida: " << _distance << " m/s" << std::endl;
-
+x\
                 return 0; // Sucesso
             } else {
                 std::cerr << "Erro: Dados insuficientes para interpretar o valor de distancia." << std::endl;

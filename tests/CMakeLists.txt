@@ -16,4 +16,4 @@ add_executable(SpeedSensorTest ${TEST_SOURCES})
 target_link_libraries(SpeedSensorTest PRIVATE SpeedSensorLib GTest::GTest GTest::Main)
 
 # Enable testing
-add_test(NAME SpeedSensorTest COMMAND SpeedSensorTest)
+add_test(NAME SpeedSensorTest COMMAND SensorsTest)
