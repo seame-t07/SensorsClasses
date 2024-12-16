@@ -26,20 +26,19 @@ int ParkSensor::readData() {
 
             std::cout << std::dec << std::endl;
 
-            if (data.size() >= sizeof(float)) {
-                uint32_t rawData = data[0] | (data[1] << 8) | (data[2] << 16) | (data[3] << 24);
+            // Se temos 2 bytes (como esperado para a distância)
+            if (data.size() >= 2) {
+                // Converte os 2 bytes para um valor de distância (little-endian)
+                int sensorValue = data[0] | (data[1] << 8);  // (byte baixo | byte alto << 8)
 
-                // Faz a conversão de uint32_t para float
-                float sensorValue;
-                std::memcpy(&sensorValue, &rawData, sizeof(sensorValue));
-
+                // Atribui o valor ao atributo _distance (distância em cm)
                 _distance = sensorValue;
 
-                std::cout << "Velocidade lida: " << _distance << " m/s" << std::endl;
+                std::cout << "Distância lida: " << _distance << " cm" << std::endl;
 
                 return 0; // Sucesso
             } else {
-                std::cerr << "Erro: Dados insuficientes para interpretar o valor de distancia." << std::endl;
+                std::cerr << "Erro: Dados insuficientes para interpretar o valor de distância." << std::endl;
                 return -1; // Erro: Dados insuficientes
             }
         } else {
