@@ -36,7 +36,7 @@ int ParkSensor::readData() {
                 _distance = sensorValue;
 
                 std::cout << "Velocidade lida: " << _distance << " m/s" << std::endl;
-x\
+
                 return 0; // Sucesso
             } else {
                 std::cerr << "Erro: Dados insuficientes para interpretar o valor de distancia." << std::endl;

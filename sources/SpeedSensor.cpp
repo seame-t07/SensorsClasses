@@ -8,6 +8,7 @@ void SpeedSensor::initialize() {
     std::cout << "Inicializando sensor de velocidade..." << std::endl;
 }
 
+
 int SpeedSensor::readData() {
     uint32_t id;
     std::vector<uint8_t> data;
@@ -16,7 +17,7 @@ int SpeedSensor::readData() {
     if (canBus.receiveMessage(id, data)) {
         // Verifica se o ID da mensagem é o esperado
         if (id == canId) {
-            std::cout << "Mensagem recebida com ID: 0x" 
+            std::cout << "Mensagem recebida com ID: 0x"
                       << std::hex << id << std::dec << "\nDados: ";
 
             // Imprime os dados recebidos no formato hexadecimal
@@ -47,7 +48,7 @@ int SpeedSensor::readData() {
                 return -1; // Erro: Dados insuficientes
             }
         } else {
-            std::cout << "Mensagem ignorada com ID inesperado: 0x" 
+            std::cout << "Mensagem ignorada com ID inesperado: 0x"
                       << std::hex << id << std::dec << std::endl;
             return -1; // Erro: ID inesperado
         }
