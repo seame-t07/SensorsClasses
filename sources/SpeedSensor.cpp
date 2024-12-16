@@ -26,10 +26,10 @@ int SpeedSensor::readData() {
 
             std::cout << std::dec << std::endl; // Retorna ao formato decimal
 
-            // Verifica se temos dados suficientes para interpretar um valor inteiro (2 bytes)
+            // Se temos 2 bytes (como esperado para a velocidade)
             if (data.size() >= 2) {
-                // Converte os primeiros 2 bytes para um inteiro (little-endian)
-                int sensorValue = data[0] | (data[1] << 8);
+                // Converte os 2 bytes em um valor de velocidade (little-endian)
+                int sensorValue = data[0] | (data[1] << 8);  // (byte baixo | byte alto << 8)
 
                 // Atribui o valor ao atributo _lastSpeed
                 _lastSpeed = sensorValue;
@@ -52,12 +52,11 @@ int SpeedSensor::readData() {
     }
 }
 
-const float SpeedSensor::getValue() const {
+
+const int SpeedSensor::getValue() const {
     return _lastSpeed;
 }
 
-const std::string SpeedSensor::getType() const{
+const std::string SpeedSensor::getType() const {
     return "SpeedSensor";
 }
-
-

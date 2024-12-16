@@ -6,7 +6,7 @@
 
 class SpeedSensor : public ISensor {
     private:
-        float _lastSpeed;
+        int _lastSpeed;
 
     public:
         SpeedSensor(CANBus& can, uint32_t id);
@@ -15,5 +15,5 @@ class SpeedSensor : public ISensor {
         int readData();
         
         const std::string getType() const;
-        const float getValue() const;
+        const int getValue() const;
 };

@@ -15,5 +15,5 @@ class ISensor {
         virtual void initialize() = 0;
         virtual int readData() = 0;
         virtual const std::string getType() const = 0;
-        virtual const float getValue() const = 0;
+        virtual const int getValue() const = 0;
 };

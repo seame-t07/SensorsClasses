@@ -13,7 +13,7 @@ int main() {
         sensor->readData();
         sensor2->readData();
         std::cout << "Read from " << sensor->getType() << sensor->getValue() << std::endl;
-        std::cout << "Read from " << sensor2->getType() << sensor->getValue() << std::endl;
+        std::cout << "Read from " << sensor2->getType() << sensor2->getValue() << std::endl;
     }
     delete sensor;
     return 0;

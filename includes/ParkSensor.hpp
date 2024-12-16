@@ -6,7 +6,7 @@
 
 class ParkSensor : public ISensor {
     private:
-        float _distance;
+        int _distance;
 
     public:
         ParkSensor(CANBus& can, uint32_t id);
@@ -15,5 +15,5 @@ class ParkSensor : public ISensor {
         int readData();
         
         const std::string getType() const;
-        const float getValue() const;
+        const int getValue() const;
 };

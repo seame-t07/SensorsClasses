@@ -53,7 +53,7 @@ int ParkSensor::readData() {
     }
 }
 
-const float ParkSensor::getValue() const {
+const int ParkSensor::getValue() const {
     return _distance;
 }
 
